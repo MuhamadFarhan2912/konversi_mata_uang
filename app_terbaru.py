@@ -41,7 +41,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
 with st.sidebar:
     st.markdown("<h1>Konversi Mata Uang</h1>", unsafe_allow_html=True)
     st.markdown("Pilih menu untuk konversi mata uang.")
@@ -75,7 +74,7 @@ elif select == 'KONVERSI MATA UANG':
             "MYR": "https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
             "EUR": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
             "YEN": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-            "IDR": "IDR.png"
+            "IDR": "https://pluspng.com/img-png/flag-logo-vector-png-republic-of-indonesia-flag-logo-vector-1600.png"
         }[mata_uang_asal]
         st.image(bendera_asal, width=50)
 
@@ -86,7 +85,7 @@ elif select == 'KONVERSI MATA UANG':
             "MYR": "https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
             "EUR": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
             "YEN": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-            "IDR": "IDR.png"
+            "IDR": "https://pluspng.com/img-png/flag-logo-vector-png-republic-of-indonesia-flag-logo-vector-1600.png"
         }[mata_uang_tujuan]
         st.image(bendera_tujuan, width=50)
 
@@ -119,7 +118,7 @@ elif select == 'ANGGARAN PERJALANAN':
             "MYR": "https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
             "EUR": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
             "YEN": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-            "IDR": "IDR.png"
+            "IDR": "https://pluspng.com/img-png/flag-logo-vector-png-republic-of-indonesia-flag-logo-vector-1600.png"
         }[mata_uang_asal]
         st.image(bendera_asal, width=50)
 
@@ -130,7 +129,7 @@ elif select == 'ANGGARAN PERJALANAN':
             "MYR": "https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg",
             "EUR": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
             "YEN": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-            "IDR": "IDR.png"
+            "IDR": "https://pluspng.com/img-png/flag-logo-vector-png-republic-of-indonesia-flag-logo-vector-1600.png"
         }[mata_uang_tujuan]
         st.image(bendera_tujuan, width=50)
 
