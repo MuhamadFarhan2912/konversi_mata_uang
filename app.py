@@ -191,13 +191,6 @@ elif select == 'Tabungan Perjalanan':
             st.error("Jumlah yang sudah ditabung lebih besar atau sama dengan anggaran perjalanan. Tidak perlu menabung lagi.")
 
 elif select == 'Konsultasi Visa':
-    # st.title("Konsultasi Visa")
-
-    # st.markdown("""
-    #     Apakah Anda membutuhkan bantuan dalam mengurus visa untuk perjalanan Anda ke negara ASEAN? 
-    #     Kami siap membantu Anda dengan konsultasi visa yang mudah dan cepat.
-    # """)
-
     st.subheader("Konsultasi melalui WhatsApp")
     whatsapp_button = st.button("Hubungi Kami di WhatsApp")
     
@@ -206,11 +199,15 @@ elif select == 'Konsultasi Visa':
         st.markdown(f"Klik [di sini untuk chat WhatsApp]( {whatsapp_url} )", unsafe_allow_html=True)
 
     st.subheader("Download Panduan Visa")
-    download_button = st.button("Unduh Panduan Visa")
+    pdf_path = "file/panduan.pdf" 
 
-    if download_button:
-        pdf_path = "files/panduan_visa.pdf"  
-        st.markdown(f"Klik [di sini untuk mengunduh panduan visa](/{pdf_path})", unsafe_allow_html=True)
+    with open(pdf_path, "rb") as pdf_file:
+        st.download_button(
+            label="Unduh Panduan Visa", 
+            data=pdf_file,              
+            file_name="panduan_visa.pdf",  
+            mime="application/pdf"    
+        )
 
 elif select == 'Tentang Kami':
     st.title("Tentang Kami")
