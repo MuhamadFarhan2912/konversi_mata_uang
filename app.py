@@ -3,9 +3,8 @@ from streamlit_option_menu import option_menu
 from logic import *
 from geopy.distance import geodesic
 locale.setlocale(locale.LC_ALL, 'id_ID.UTF-8')
-# st.set_page_config(page_title="Konversi", page_icon="💰", layout="wide")
 st.set_page_config(page_title="ASEAN Travel Planner", page_icon="🌏", layout="wide")
-
+    
 with st.sidebar:
     select = option_menu('FourCoders', 
                          ['Home', 
@@ -22,20 +21,22 @@ with st.sidebar:
                                  "nav-link": {"font-size": "16px", "text-align": "left"}})
 
 if select == 'Home':
-    st.title("🌏 **ASEAN Travel Planner** 🌏")
-    st.markdown("""
-        **Selamat datang di ASEAN Travel Planner!**  
-        Aplikasi ini dirancang untuk membantu Anda merencanakan perjalanan ke negara-negara ASEAN dengan mudah dan praktis.  
-        Dengan fitur-fitur seperti konversi mata uang, penghitung jarak antar negara, perhitungan anggaran perjalanan, dan simulasi tabungan, perjalanan Anda akan lebih terencana dengan baik.
+    col1, col2 = st.columns(2)
 
-        ### Fitur Aplikasi:
-        - **Konversi Mata Uang**: Mengonversi mata uang antar negara-negara ASEAN.
-        - **Penghitung Jarak Antar Negara**: Menghitung jarak antar negara di ASEAN.
-        - **Anggaran Perjalanan**: Menghitung anggaran yang diperlukan untuk perjalanan Anda.
-        - **Simulasi Tabungan**: Simulasi berapa lama waktu yang dibutuhkan untuk menabung.
+    photo = ('images/org.png')
 
-        🚀 **Mudah dan Cepat!** 
-    """)
+    with col1:
+        st.markdown(
+            """
+            <h1 style='text-align: center; margin-top: 6rem; color: rgb(244, 66, 30); border: 3px solid rgb(244, 66, 30); padding: 20px;'>
+            ASEAN TRAVEL PLANNER ✈️
+            </h1>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with col2:
+        st.image(f"{photo}", width=300)
 
 elif select == 'Konversi Mata Uang':
     st.title('KONVERSI MATA UANG')
@@ -152,13 +153,14 @@ elif select == 'Anggaran Perjalanan':
         }[mataUangTujuan]
         st.image(benderaTujuan, width=50)
 
-    biayaTransportasi = st.number_input("Masukkan biaya transportasi (per hari):", min_value=0.0)
-    biayaAkomodasi = st.number_input("Masukkan biaya akomodasi (per hari):", min_value=0.0)
-    biayaMakanan = st.number_input("Masukkan biaya makanan (per hari):", min_value=0.0)
-    durasiPerjalanan = st.number_input("Masukkan durasi perjalanan (hari):", min_value=1)
+    biayaTransportasi = st.number_input("Masukkan perkiraan biaya transportasi anda:", min_value=0.0)
+    biayaAkomodasi = st.number_input("Masukkan perkiraan biaya akomodasi anda:", min_value=0.0)
+    biayaMakanan = st.number_input("Masukkan perkiraan biaya konsumsi:", min_value=0.0)
+    biayaTakTerduga = st.number_input("Masukkan biaya tak terduga anda:", min_value=0.0)
+    
 
     if st.button("Hitung Anggaran"):
-        anggaranObjek = AnggaranPerjalanan(biayaTransportasi, biayaAkomodasi, biayaMakanan, durasiPerjalanan)
+        anggaranObjek = AnggaranPerjalanan(biayaTransportasi, biayaAkomodasi, biayaMakanan, biayaTakTerduga)
         totalAnggaran = anggaranObjek.hitungAnggaran()
         if mataUangAsal != mataUangTujuan:
             konversiAnggaran = MataUang(mataUangAsal, mataUangTujuan, totalAnggaran)
@@ -167,6 +169,7 @@ elif select == 'Anggaran Perjalanan':
             st.success(f'Jika dikonversi ke negara tujuan anda = {locale.currency(hasilAnggaran, grouping=True, symbol=False)} {mataUangTujuan}')
         else:
             st.error("Mata uang asal dan tujuan tidak boleh sama!")
+
 
 elif select == 'Tabungan Perjalanan':
     st.title('TABUNGAN PERJALANAN')
